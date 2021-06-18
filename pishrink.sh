@@ -316,7 +316,7 @@ info "AdoPiSoft: Removing logs, activation cache, and device ids"
 mountdir=$(mktemp -d)
 mount "$loopback" "$mountdir"
 rm -rvf $mountdir/etc/devact
-rm -rvf $mountdir/etc/device-id
+rm -rvf $mountdir/etc/device-uid
 rm -rvf $mountdir/opt/adopisoft/*.log
 umount "$mountdir"
 
