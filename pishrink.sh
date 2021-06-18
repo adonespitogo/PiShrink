@@ -309,6 +309,12 @@ if [[ $prep == true ]]; then
   mountdir=$(mktemp -d)
   mount "$loopback" "$mountdir"
   rm -rvf $mountdir/var/cache/apt/archives/* $mountdir/var/lib/dhcpcd5/* $mountdir/var/log/* $mountdir/var/tmp/* $mountdir/tmp/* $mountdir/etc/ssh/*_host_*
+
+  info "AdoPiSoft: Removing logs, activation cache, and device ids"
+  rm -rvf $mountdir/etc/devact
+  rm -rvf $mountdir/etc/device-id
+  rm -rvf $mountdir/opt/adopisoft/*.log
+
   umount "$mountdir"
 fi
 
