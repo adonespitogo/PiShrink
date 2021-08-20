@@ -175,7 +175,7 @@ debug=false
 repair=false
 parallel=false
 verbose=false
-prep=false
+prep=true
 ziptool=""
 
 while getopts ":adhprsvzZ" opt; do
@@ -308,7 +308,8 @@ if [[ $prep == true ]]; then
   info "Syspreping: Removing logs, apt archives, dhcp leases and ssh hostkeys"
   mountdir=$(mktemp -d)
   mount "$loopback" "$mountdir"
-  rm -rvf $mountdir/var/cache/apt/archives/* $mountdir/var/lib/dhcpcd5/* $mountdir/var/log/* $mountdir/var/tmp/* $mountdir/tmp/* $mountdir/etc/ssh/*_host_*
+  rm -rvf $mountdir/var/cache/apt/archives/* $mountdir/var/lib/dhcpcd5/* $mountdir/var/log/* $mountdir/var/tmp/* $mountdir/tmp/*
+  mkdir -p $mountdir/var/log/nginx
   umount "$mountdir"
 fi
 
@@ -318,6 +319,7 @@ mount "$loopback" "$mountdir"
 rm -rvf $mountdir/etc/devact
 rm -rvf $mountdir/etc/device-uid
 rm -rvf $mountdir/opt/adopisoft/*.log
+rm -rvf $mountdir/opt/adopisoft/captive-portal/dist/*
 umount "$mountdir"
 
 #Make sure filesystem is ok
