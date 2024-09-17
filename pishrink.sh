@@ -352,6 +352,7 @@ rm -rvf $mountdir/etc/devact
 rm -rvf $mountdir/etc/device-uid
 rm -rvf $mountdir/opt/adopisoft/*.log
 rm -rvf $mountdir/opt/adopisoft/captive-portal/dist/*
+rm -rvf $mountdir/opt/usb
 umount "$mountdir"
 
 #Shrink filesystem
