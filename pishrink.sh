@@ -350,9 +350,19 @@ mountdir=$(mktemp -d)
 mount "$loopback" "$mountdir"
 rm -rvf $mountdir/etc/devact
 rm -rvf $mountdir/etc/device-uid
+rm -rvf $mountdir/opt/adopisoft/config/accounts
 rm -rvf $mountdir/opt/adopisoft/*.log
+rm -rvf $mountdir/opt/adopisoft/*.sqlite
 rm -rvf $mountdir/opt/adopisoft/captive-portal/dist/*
 rm -rvf $mountdir/opt/usb
+
+# set install_wizard to false
+file_path="$mountdir/opt/adopisoft/config/application.ini"
+if [ -f "$file_path" ]; then
+    sed -i 's/install_wizard=true/install_wizard=false/' "$file_path"
+    echo "Successfully set the install_wizard indicator value to false"
+fi
+
 umount "$mountdir"
 
 #Shrink filesystem
