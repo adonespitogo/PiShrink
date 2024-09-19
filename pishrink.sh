@@ -351,6 +351,7 @@ mount "$loopback" "$mountdir"
 rm -rvf $mountdir/etc/devact
 rm -rvf $mountdir/etc/device-uid
 rm -rvf $mountdir/opt/adopisoft/config/accounts
+rm -rvf $mountdir/opt/adopisoft/config/wifi.ini
 rm -rvf $mountdir/opt/adopisoft/*.log
 rm -rvf $mountdir/opt/adopisoft/*.sqlite
 rm -rvf $mountdir/opt/adopisoft/captive-portal/dist/*
